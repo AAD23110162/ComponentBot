@@ -1,0 +1,282 @@
+{
+  "version": "1.0",
+  "description": "Base de datos inicial de ComponentBot en formato JSON.",
+  "components": [
+    {
+      "id": "resistencia",
+      "name": "Resistencia",
+      "desc": "Componente pasivo que limita el flujo de corriente eléctrica.",
+      "attrs": {"pasivo": true, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "led",
+      "name": "LED",
+      "desc": "Diodo emisor de luz. Uno de los componentes más usados en electrónica.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "esRGB": false, "esSMD": false, "esThroughHole": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "led_rojo",
+      "name": "LED Rojo",
+      "desc": "LED rojo de un solo color, típico en indicadores y paneles.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "esRGB": false, "colorRojo": true, "colorVerde": false, "colorAzul": false, "esSMD": false, "esThroughHole": true, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "led_verde",
+      "name": "LED Verde",
+      "desc": "LED verde de un solo color, común en indicadores y displays.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "esRGB": false, "colorRojo": false, "colorVerde": true, "colorAzul": false, "esSMD": false, "esThroughHole": true, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "led_azul",
+      "name": "LED Azul",
+      "desc": "LED azul de un solo color, usado en iluminación y señalizaciones modernas.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "esRGB": false, "colorRojo": false, "colorVerde": false, "colorAzul": true, "esSMD": false, "esThroughHole": true, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "led_smd",
+      "name": "LED SMD",
+      "desc": "LED en paquete SMD para montaje superficial, común en tiras y placas.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "esRGB": false, "esSMD": true, "esThroughHole": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "led_throughhole",
+      "name": "LED Through-hole",
+      "desc": "LED clásico de montaje pasante, fácil de usar en protoboards.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "esRGB": false, "esSMD": false, "esThroughHole": true, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "led_rgb",
+      "name": "LED RGB",
+      "desc": "LED de tres colores con pines separados para cada canal.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "esRGB": true, "colorRojo": false, "colorVerde": false, "colorAzul": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "mosfet",
+      "name": "Transistor MOSFET",
+      "desc": "Transistor de efecto de campo controlado por voltaje.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": true, "mideTempH": false, "mideMovim": false, "esDePotencia": true, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "t555",
+      "name": "Timer 555",
+      "desc": "CI clásico para generar pulsos, temporizadores y osciladores.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": true, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "arduino_uno",
+      "name": "Arduino Uno",
+      "desc": "Placa de desarrollo con ATmega328P y conexión USB.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": true, "inalambrico": false, "necesitaProg": true, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": true, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": true, "es3v3": false, "esIC": false, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "esp32",
+      "name": "ESP32",
+      "desc": "Módulo con WiFi y Bluetooth integrado para proyectos IoT.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": true, "inalambrico": true, "necesitaProg": true, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": true, "tieneBT": true, "esActuador": false, "esDigital": false, "tieneUSB": true, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": true, "es3v3": true, "esIC": false, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "dht22",
+      "name": "DHT22",
+      "desc": "Sensor de temperatura y humedad digital de mayor precisión.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": true, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "hcsr04",
+      "name": "HC-SR04",
+      "desc": "Sensor ultrasónico de distancia con trigger y echo.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": true, "esDriver": false}
+    },
+    {
+      "id": "lcd16x2",
+      "name": "LCD 16x2",
+      "desc": "Pantalla de texto 16x2 con control paralelo o I2C.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": true, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "servo_sg90",
+      "name": "Servomotor SG90",
+      "desc": "Pequeño servo para movimiento controlado con señal PWM.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": true, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "relay_mod",
+      "name": "Módulo Relé",
+      "desc": "Módulo con relé para controlar cargas AC/DC desde 5V lógico.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": true, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": true, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "ldr",
+      "name": "LDR",
+      "desc": "Resistencia dependiente de la luz, usada como sensor analógico.",
+      "attrs": {"pasivo": true, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "cap_elec",
+      "name": "Capacitor electrolítico",
+      "desc": "Capacitor polarizado para almacenamiento de carga en fuentes y filtrado.",
+      "attrs": {"pasivo": true, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "cap_cer",
+      "name": "Capacitor cerámico",
+      "desc": "Capacitor no polarizado común en filtrado de señales y desacoplo.",
+      "attrs": {"pasivo": true, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "inductor",
+      "name": "Inductor",
+      "desc": "Bobina que almacena energía en un campo magnético y filtra señales.",
+      "attrs": {"pasivo": true, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "bjt_npn",
+      "name": "Transistor BJT NPN",
+      "desc": "Transistor bipolar usado para conmutación y amplificación de señales.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": true, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "optocoupler",
+      "name": "Optoacoplador",
+      "desc": "Aíslador eléctrico que transmite señales por luz entre circuitos.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "74hc595",
+      "name": "74HC595 Shift Register",
+      "desc": "Registro de desplazamiento serial-a-paralelo para expandir salidas digitales.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "74hc04",
+      "name": "Puerta lógica 74HC04",
+      "desc": "Circuito integrado con seis inversores lógicos en encapsulado DIP.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "hc05",
+      "name": "HC-05 Bluetooth",
+      "desc": "Módulo Bluetooth clásico para comunicación serial inalámbrica.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": true, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": true, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": true, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "nrf24l01",
+      "name": "nRF24L01",
+      "desc": "Transceptor RF de 2.4GHz para comunicación inalámbrica por SPI.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": true, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": true, "esIC": false, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "sim800l",
+      "name": "SIM800L GSM",
+      "desc": "Módulo GSM/GPRS para enviar SMS y conectar a redes móviles.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": true, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": true, "tieneOscilador": false, "es3v3": true, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "bmp280",
+      "name": "BMP280",
+      "desc": "Sensor barométrico digital de presión y temperatura I2C/SPI.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": true, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": true, "esIC": true, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "mpu6050",
+      "name": "MPU6050",
+      "desc": "IMU con acelerómetro y giroscopio 3 ejes, utiliza I2C.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": true, "esDePotencia": false, "tieneOscilador": false, "es3v3": true, "esIC": true, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "lm35",
+      "name": "LM35",
+      "desc": "Sensor analógico de temperatura de salida lineal en voltaje.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": true, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "ds18b20",
+      "name": "DS18B20",
+      "desc": "Sensor digital de temperatura con protocolo 1-Wire.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": true, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": true, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "pir_hc_sr501",
+      "name": "PIR HC-SR501",
+      "desc": "Sensor PIR para detección de movimiento por infrarrojo pasivo.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": true, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "ir_vs1838b",
+      "name": "Receptor IR VS1838B",
+      "desc": "Receptor infrarrojo para control remoto de 38kHz.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": true, "es3v3": true, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "mq2",
+      "name": "MQ-2 Gas",
+      "desc": "Sensor de gas y humo para detección de fugas inflamables.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "soil_moisture",
+      "name": "Sensor de humedad de suelo",
+      "desc": "Módulo para estimar humedad del sustrato por conductividad.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": true, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "rc522",
+      "name": "RFID RC522",
+      "desc": "Lector RFID/NFC de 13.56MHz con interfaz SPI.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": true, "necesitaProg": false, "esModulo": true, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": true, "es3v3": true, "esIC": false, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": true, "esDriver": false}
+    },
+    {
+      "id": "oled_ssd1306",
+      "name": "OLED SSD1306",
+      "desc": "Display OLED monocromo de 0.96 pulgadas con I2C/SPI.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": true, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": true, "esIC": false, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": false, "esDriver": true}
+    },
+    {
+      "id": "ws2812b",
+      "name": "LED WS2812B",
+      "desc": "LED RGB direccionable digitalmente con un solo pin de datos.",
+      "attrs": {"pasivo": false, "emiteLuz": true, "esMCU": false, "inalambrico": false, "necesitaProg": true, "esModulo": false, "esSensor": false, "esDisplay": false, "esRGB": true, "esSMD": true, "esThroughHole": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": true, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": true}
+    },
+    {
+      "id": "l298n",
+      "name": "Driver L298N",
+      "desc": "Módulo puente H dual para control de motores DC y paso a paso.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": true, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": true, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": true, "tieneOscilador": false, "es3v3": false, "esIC": false, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": true}
+    },
+    {
+      "id": "a4988",
+      "name": "Driver A4988",
+      "desc": "Controlador de motor paso a paso con microstepping.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": true, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": true, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": true, "tieneOscilador": false, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": true}
+    },
+    {
+      "id": "lm2596",
+      "name": "LM2596 Buck",
+      "desc": "Módulo convertidor DC-DC reductor de voltaje ajustable.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": false, "esDisplay": false, "regulaV": true, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": true, "tieneOscilador": true, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": true, "mideDistancia": false, "esDriver": true}
+    },
+    {
+      "id": "acs712",
+      "name": "ACS712",
+      "desc": "Sensor de corriente de efecto Hall para medición AC/DC.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": false, "tieneUSB": false, "esAmplif": true, "mideTempH": false, "mideMovim": false, "esDePotencia": true, "tieneOscilador": false, "es3v3": false, "esIC": true, "tieneI2C_SPI": false, "masDeUnComponente": false, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "ads1115",
+      "name": "ADS1115",
+      "desc": "ADC de 16 bits con interfaz I2C para lecturas de precisión.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": true, "es3v3": true, "esIC": true, "tieneI2C_SPI": true, "masDeUnComponente": false, "mideDistancia": false, "esDriver": true}
+    },
+    {
+      "id": "ds3231",
+      "name": "RTC DS3231",
+      "desc": "Reloj en tiempo real de alta precisión con cristal compensado.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": true, "esSensor": true, "esDisplay": false, "regulaV": false, "masDe4Pines": false, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": true, "es3v3": true, "esIC": true, "tieneI2C_SPI": true, "masDeUnComponente": true, "mideDistancia": false, "esDriver": false}
+    },
+    {
+      "id": "pcf8574",
+      "name": "PCF8574",
+      "desc": "Expansor de entradas/salidas digitales por bus I2C.",
+      "attrs": {"pasivo": false, "emiteLuz": false, "esMCU": false, "inalambrico": false, "necesitaProg": false, "esModulo": false, "esSensor": false, "esDisplay": false, "regulaV": false, "masDe4Pines": true, "tieneWifi": false, "tieneBT": false, "esActuador": false, "esDigital": true, "tieneUSB": false, "esAmplif": false, "mideTempH": false, "mideMovim": false, "esDePotencia": false, "tieneOscilador": false, "es3v3": true, "esIC": true, "tieneI2C_SPI": true, "masDeUnComponente": false, "mideDistancia": false, "esDriver": true}
+    }
+  ]
+}

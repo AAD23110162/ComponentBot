@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ComponentBot — Adivina el Componente</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-line"></div>
+    <h1>⚡ COMPONENTBOT</h1>
+    <div class="subtitle">Sistema de identificación de componentes electrónicos</div>
+    <div class="header-line"></div>
+  </header>
+
+  <!-- MAIN GAME SCREEN -->
+  <div class="screen fade-in" id="gameScreen" data-label="SESIÓN ACTIVA">
+    <div class="screen-grid">
+      <aside class="robot-panel" id="robotPanel">
+        <canvas id="robotCanvas" width="360" height="360" class="robot-canvas"></canvas>
+        <div class="robot-subtitle" id="robotSubMood">ANÁLISIS EN TIEMPO REAL</div>
+        <div class="robot-label" id="robotMoodLabel">NEUTRAL</div>
+      </aside>
+      <div class="game-content">
+        <div class="status-bar">
+      <div><span class="status-dot"></span> SISTEMA EN LÍNEA</div>
+      <div class="stat-chip">BD: <span id="dbCount">0</span> componentes</div>
+      <div class="stat-chip">Sesión: <span id="sessionCount">0</span> juegos</div>
+    </div>
+
+    <!-- INTRO / START -->
+    <div id="phaseIntro" class="phase-card fade-in">
+      <div class="section-title">▸ INICIAR IDENTIFICACIÓN</div>
+      <p style="font-size:13px; line-height:1.7; color:var(--text); margin-bottom:20px;">
+        Piensa en un <strong style="color:var(--green)">componente electrónico</strong> —puede ser desde
+        una resistencia hasta un ESP32-S3— y responderé preguntas de
+        <span style="color:var(--amber)">SÍ / NO</span> hasta adivinarlo.<br><br>
+        Si fallo, <strong style="color:var(--green)">aprenderé</strong> el componente correcto y lo guardaré
+        en mi base de datos.
+      </p>
+      <div class="notice notice-info">
+        💡 Responde con honestidad. Entre más juegues, más componentes aprenderé.
+      </div>
+      <div class="btn-row" style="margin-top:20px;">
+        <button class="btn btn-primary" onclick="startGame()">▶ COMENZAR PARTIDA</button>
+      </div>
+    </div>
+
+    <!-- QUESTION -->
+    <div id="phaseQuestion" class="phase-card hidden fade-in">
+      <div class="progress-container">
+        <div class="progress-label">
+          <span>PROCESO DE IDENTIFICACIÓN</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="candidates-info">
+        <span>Candidatos restantes:</span>
+        <span class="candidates-count" id="candidatesCount">0</span>
+        <span style="font-size:10px; opacity:0.6;">componentes posibles</span>
+      </div>
+
+      <div class="question-number" id="questionNumber">PREGUNTA 01</div>
+      <div class="question-text" id="questionText">Cargando pregunta...</div>
+
+      <div class="btn-row">
+        <button class="btn btn-yes"     onclick="answer(true)">✔ SÍ</button>
+        <button class="btn btn-no"      onclick="answer(false)">✖ NO</button>
+        <button class="btn btn-maybe"   onclick="answer(null)">~ TAL VEZ</button>
+        <button class="btn btn-unknown" onclick="answer('unknown')">— NO SÉ</button>
+      </div>
+
+      <div class="history-log" id="historyLog"></div>
+    </div>
+
+    <!-- GUESS -->
+    <div id="phaseGuess" class="phase-card hidden fade-in">
+      <div class="guess-reveal">
+        <div class="guess-label">▸ MI DIAGNÓSTICO ES:</div>
+        <span class="guess-icon" id="guessIcon">🔌</span>
+        <div class="guess-name" id="guessName">—</div>
+        <div class="guess-desc" id="guessDesc">—</div>
+      </div>
+      <div class="section-title">¿ES CORRECTO?</div>
+      <div class="btn-row">
+        <button class="btn btn-yes" onclick="confirmGuess(true)">✔ ¡SÍ, CORRECTO!</button>
+        <button class="btn btn-no"  onclick="confirmGuess(false)">✖ NO, ES OTRO</button>
+      </div>
+    </div>
+
+    <!-- CORRECT -->
+    <div id="phaseCorrect" class="phase-card hidden fade-in">
+      <div class="confetti-row">⚡🎯✅🔬⚡</div>
+      <div class="result-correct">
+        ¡IDENTIFICACIÓN EXITOSA!<br>
+        <span style="font-size:13px; font-family:var(--mono); color:var(--text)">
+          Aprendizaje confirmado.
+        </span>
+      </div>
+      <div class="btn-row" style="margin-top:20px;">
+        <button class="btn btn-primary" onclick="startGame()">▶ NUEVA PARTIDA</button>
+      </div>
+    </div>
+
+    <!-- WRONG — Ask for correct component -->
+    <div id="phaseWrong" class="phase-card hidden fade-in">
+      <div class="result-wrong">⚠ IDENTIFICACIÓN FALLIDA</div>
+      <div class="notice notice-warn" style="margin-top:16px;">
+        Necesito aprender. ¿Cuál era el componente correcto?
+      </div>
+      <input type="text" id="correctComponentInput" class="input-field"
+             placeholder="Ej: ATmega328, MOSFET IRF540, DHT22..."
+             style="margin:12px 0;"
+             onkeydown="if(event.key==='Enter') proceedWithCorrect()">
+      <div class="btn-row">
+        <button class="btn btn-amber" onclick="proceedWithCorrect()">▶ CONTINUAR</button>
+        <button class="btn btn-secondary" onclick="startGame()">◀ CANCELAR</button>
+      </div>
+    </div>
+
+    <!-- LEARN — Define new component attributes -->
+    <div id="phaseLearn" class="phase-card hidden fade-in">
+      <div class="section-title">📡 APRENDIZAJE DE NUEVO COMPONENTE</div>
+      <p style="font-size:12px; color:var(--text); margin-bottom:4px;">
+        Componente: <strong style="color:var(--amber)" id="learnComponentName">—</strong>
+      </p>
+      <p style="font-size:11px; color:var(--green2); margin-bottom:16px;">
+        Marca las características que corresponden. Haz clic para alternar SÍ / NO.
+      </p>
+      <div class="learn-grid" id="learnGrid"></div>
+      <div class="notice notice-info" id="learnNotice" style="display:none;"></div>
+      <div class="btn-row" style="margin-top:16px;">
+        <button class="btn btn-primary" onclick="saveLearnedComponent()">💾 GUARDAR EN BASE DE DATOS</button>
+        <button class="btn btn-secondary" onclick="startGame()">✖ CANCELAR</button>
+      </div>
+      </div>
+    </div><!-- /screen-grid -->
+
+  </div><!-- /gameScreen -->
+
+  <!-- DB PANEL -->
+  <div class="db-panel">
+    <div class="db-panel-header" onclick="toggleDBPanel()">
+      <span>📁 BASE DE DATOS &amp; GESTIÓN</span>
+      <span id="dbArrow">▼</span>
+    </div>
+    <div class="db-panel-body" id="dbPanelBody">
+      <div class="db-stats">
+        <div class="db-stat">
+          <div class="db-stat-val" id="statTotal">0</div>
+          <div class="db-stat-lbl">COMPONENTES</div>
+        </div>
+        <div class="db-stat">
+          <div class="db-stat-val" id="statLearned">0</div>
+          <div class="db-stat-lbl">APRENDIDOS</div>
+        </div>
+        <div class="db-stat">
+          <div class="db-stat-val" id="statAttr">0</div>
+          <div class="db-stat-lbl">ATRIBUTOS</div>
+        </div>
+        <div class="db-stat">
+          <div class="db-stat-val" id="statGames">0</div>
+          <div class="db-stat-lbl">PARTIDAS</div>
+        </div>
+        <div class="db-stat">
+          <div class="db-stat-val" id="statTypes">0</div>
+          <div class="db-stat-lbl">TIPOS</div>
+        </div>
+      </div>
+
+      <div class="section-title">▸ TIPOS Y VARIEDAD</div>
+      <div class="type-grid" id="typeVarietyGrid"></div>
+
+      <div class="section-title">▸ COMPONENTES EN BD</div>
+      <div class="db-subinfo" id="componentCoverage">Mostrando 0 de 0 componentes</div>
+      <div class="component-grid" id="componentGrid"></div>
+
+      <div class="section-title" style="margin-top:16px;">▸ ACCIONES</div>
+      <div class="btn-row" style="flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="exportDB()" style="flex:none; min-width:auto; padding:10px 16px; font-size:11px;">
+          ⬇ EXPORTAR JSON
+        </button>
+        <label class="file-input-label" for="fileInput">⬆ IMPORTAR JSON</label>
+        <input type="file" id="fileInput" accept=".json" onchange="importDB(event)">
+        <button class="btn btn-danger" onclick="resetDB()" style="flex:none; min-width:auto; padding:10px 16px; font-size:11px;">
+          ⚠ RESET TOTAL
+        </button>
+      </div>
+      <div class="notice notice-warn" style="margin-top:12px;">
+        ⚠ Exporta el JSON para guardar tu progreso. Al cerrar la página los datos persisten 
+        en localStorage, pero el export JSON es la copia de seguridad definitiva.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -153,6 +153,35 @@ El juego utiliza los siguientes atributos para clasificar componentes:
 - **esActuador**: Mueve cargas físicas
 - ... y muchos más!
 
+**Mecánica de Adivinanza y Pesos**
+
+- **Resumen del algoritmo**: El juego comienza con todos los componentes de la base de datos como candidatos. En cada paso se elige una pregunta (un atributo) que intenta dividir a los candidatos de forma lo más equilibrada posible. La elección se basa en minimizar la diferencia absoluta entre la cantidad de componentes que responden "sí" y los que responden "no" para ese atributo (cálculo implementado en `getBestQuestion()` en [app.js](app.js#L1-L1200)).
+
+- **Selección de la siguiente pregunta**: Para cada atributo no preguntado se cuenta cuántos candidatos tienen `true` (yes) y cuántos `false` (no). Se calcula `score = |yes - no|` y se elige el atributo con menor `score` (es decir, el que mejor equilibra la partición).
+
+- **Cómo afectan las respuestas a los candidatos ("pesos" implícitos)**n
+   - **✔ Sí**: se mantienen los componentes que tienen el atributo marcado como `true` y también los que no tienen definido ese atributo (`undefined`). En la implementación esto equivale a: un componente sobrevive si `item.attrs[attr] === undefined || item.attrs[attr] === true`.
+   - **✖ No**: se mantienen los componentes que tienen el atributo marcado como `false` y también los que no tienen definido ese atributo (`undefined`). Es decir, sobrevive si `item.attrs[attr] === undefined || item.attrs[attr] === false`.
+   - **— No sé / unknown**: no filtra la lista de candidatos en absoluto (la función `answer()` omite el filtrado cuando el valor es `'unknown'`).
+
+   En términos numéricos simples (N = candidatos totales, y = sí, n = no, u = indefinidos):
+   - Responder **Sí** deja `y + u` candidatos.
+   - Responder **No** deja `n + u` candidatos.
+   - Responder **Unknown** deja `N` candidatos.
+
+   - **Diferencia entre "No sé" y "Tal vez"**
+
+      - **"No sé"**: en la interfaz se registra como `"unknown"` y se muestra en el historial como `— NO SÉ`. En la lógica (en `answer()`), cuando el valor es `'unknown'` no se aplica ningún filtrado sobre los candidatos, por lo que la lista permanece con `N` candidatos.
+      - **"Tal vez"**: en la interfaz se registra internamente como `null` y se muestra en el historial como `~ TAL VEZ`. El comportamiento frente al filtrado es el mismo que `"unknown"`: el código omite el filtrado cuando el valor es `null`, por lo que también deja `N` candidatos.
+
+      - **Resumen práctico**: tanto `"No sé"` como `"Tal vez"` tienen el mismo efecto funcional en la supervivencia de candidatos (no filtran), la única diferencia es semántica/visual en el historial y en cómo se representa internamente (`'unknown'` vs `null`). El chequeo relevante en el código es `if (value !== null && value !== 'unknown')` (ver `answer()` en `app.js`).
+
+- **Interpretación de "pesos"**: el código no usa multiplicadores numéricos explícitos; en cambio aplica un filtro booleano: coincidencia → mantiene (peso efectivo 1), contradicción → elimina (peso efectivo 0), indefinido → mantiene (neutral). Por tanto los "pesos" son implícitos y binarios en la regla de supervivencia de cada componente frente a una respuesta.
+
+- **Consecuencia práctica**: los componentes con atributos no definidos tienen ventaja de supervivencia (son conservadores), por lo que el bot tiende a no descartar componentes cuya ficha esté incompleta. Esto ayuda al aprendizaje incremental, ya que componentes con pocos atributos no se eliminan prematuramente.
+
+- **Dónde ver la lógica**: la selección de preguntas está en `getBestQuestion()` y el filtrado por respuesta en `answer()` dentro de [app.js](app.js#L1-L1200). Si quieres un sistema basado en probabilidades (pesos continuos) en lugar de filtros booleanos, puedo proponer y aplicar una modificación.
+
 ## 🐛 Solución de Problemas
 
 ### La aplicación no carga
@@ -183,7 +212,7 @@ Este proyecto está bajo la licencia especificada en el archivo [LICENSE](LICENS
 4. Push a la rama (`git push origin feature/MiFeature`)
 5. Abre un Pull Request
 
-## 💡 Ideas para Mejorar
+## 💡 Futuras Mejoras
 
 - [ ] Añadir más componentes a la base de datos inicial
 - [ ] Implementar visualización en tiempo real del árbol de decisión

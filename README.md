@@ -52,6 +52,46 @@ Gestión del flujo de preguntas, evaluación de candidatos, confirmación de hip
 3. Datos
 Base inicial en JSON y estado persistente en localStorage con posibilidad de respaldo externo.
 
+## Algoritmo y detalles técnicos
+
+ComponentBot está diseñado como un juego tipo "Adivina quién" aplicado a componentes electrónicos: el usuario piensa en un componente y el sistema realiza preguntas binarias (atributos) para identificarlo.
+
+Principales pasos del algoritmo:
+
+- Inicialización: el conjunto de candidatos se carga desde `components.json` o desde la copia guardada en `localStorage`.
+- Selección de pregunta: en cada turno el sistema evalúa los atributos que no han sido preguntados y calcula, para cada atributo, cuántos candidatos responderían "sí" y cuántos "no". Se prioriza el atributo que mejor balancea la partición (minimiza |yes - no|). Esta heurística busca maximizar la reducción del espacio de búsqueda en cada pregunta (implementado en `getBestQuestion()` en `app.js`).
+- Aplicación de la respuesta: según la respuesta del usuario se filtra la lista de candidatos:
+   - Respuesta **Sí**: se mantienen candidatos con ese atributo `true` y aquellos con el atributo indefinido.
+   - Respuesta **No**: se mantienen candidatos con ese atributo `false` y aquellos con el atributo indefinido.
+   - Respuesta **Tal vez** / **No sé**: no se aplica filtrado (conservador), para evitar eliminar candidatos con datos incompletos.
+
+- Decisión de adivinanza: cuando el número de candidatos es 1 (o cae por debajo de un umbral configurable), el sistema propone una adivinanza al usuario.
+
+- Aprendizaje: si la adivinanza es incorrecta, el usuario puede introducir el componente correcto y marcar sus atributos. Ese nuevo registro se añade a la base de datos en memoria y se persiste en `localStorage`.
+
+Aspectos técnicos y complejidad:
+
+- Complejidad temporal por turno: O(A * N) donde A es el número de atributos posibles y N el número de candidatos actuales (se cuentan yes/no por atributo). En la práctica A es limitado (decenas) y N decrece con cada pregunta.
+- Complejidad espacial: O(N) para almacenar candidatos; la base de datos completa también ocupa O(M) donde M es número total de componentes.
+- Persistencia: los datos y estadísticas se guardan en `localStorage` usando claves específicas para permitir restauración entre sesiones y exportar/importar respaldos en JSON.
+
+Limitaciones conocidas:
+
+- El sistema utiliza filtros booleanos y mantiene candidatos con atributos indefinidos (comportamiento conservador). Esto reduce falsos negativos pero puede mantener demasiados candidatos si los registros están incompletos.
+- No se aplica un modelo probabilístico (por ejemplo, estimación Bayesiana) ni se usa información mutua/entropía explícita; la heurística actual es simple y explicable.
+- Ambigüedades semánticas en nombres y descripciones pueden provocar duplicados o confusiones; se recomienda normalizar `id` y `name` al agregar componentes.
+
+Mejoras propuestas:
+
+- Reemplazar la heurística actual por un criterio de ganancia de información (information gain) o puntuación probabilística para priorizar preguntas.
+- Introducir pesos y confidencias en atributos (por ejemplo, si un atributo fue verificado muchas veces su peso aumenta).
+- Añadir un modo de desambiguación que muestre diferencias entre los dos candidatos más probables antes de adivinar.
+- Soporte para coincidencia por similitud de texto (fuzzy matching) al aprender nuevos nombres.
+
+Privacidad y datos:
+
+- Toda la información de aprendizaje se almacena localmente en el navegador (`localStorage`). No se transmite a servidores externos por defecto.
+
 ## Flujo de Uso
 
 1. Iniciar una nueva partida.
